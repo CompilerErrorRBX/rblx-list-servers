@@ -152,7 +152,7 @@ function fc(L_108_arg1, L_109_arg2)
 	L_23_ = nil
 	L_68_ = {}
 	if (L_58_ ~= nil and L_55_.Parent ~= nil) then
-		fb(0)
+		hb(0)
 	end
 	D()
 	if (L_111_ == nil or L_111_:FindFirstChild("ViewModel") == nil) then
@@ -220,7 +220,7 @@ function fc(L_108_arg1, L_109_arg2)
 			return L_55_
 		end
 		oc("Idle", true)
-		fb(0)
+		hb(0)
 		game:GetService("RunService").RenderStepped:wait()
 	end
 	L_72_ = true
@@ -324,7 +324,7 @@ function k()
 	end
 	if (L_61_ == "Shoot" or L_61_ == "Draw" or L_61_ == "ReloadEnd" or L_61_ == "Reload" or L_61_ == "Special") then
 		oc("Idle", false, 0.0)
-		jb()
+		ab()
 		return
 	end
 	if (L_61_ == "Rechamber") then
@@ -335,8 +335,8 @@ function k()
 	if (L_28_) then
 		if (not L_29_) then
 			oc("Idle", false, 0.0)
+			cb()
 			ab()
-			jb()
 		else
 			P()
 		end
@@ -350,7 +350,7 @@ function k()
 	end
 	oc("Idle", false, 0.2)
 end
-function cb(L_143_arg1)
+function bb(L_143_arg1)
 	return not L_143_arg1 or L_143_arg1 == "Run" or L_143_arg1 == "Idle"
 end
 local L_79_ = true
@@ -362,8 +362,8 @@ function oc(L_144_arg1, L_145_arg2, L_146_arg3, L_147_arg4, L_148_arg5)
 		L_34_ = 75
 	end
 	local L_149_ = L_144_arg1 ~= L_61_
-	local L_150_ = cb(L_61_)
-	local L_151_ = cb(L_144_arg1)
+	local L_150_ = bb(L_61_)
+	local L_151_ = bb(L_144_arg1)
 	local L_152_ = L_145_arg2 or L_79_ or not L_60_ or L_149_
 	if (not L_152_) then
 		return
@@ -413,7 +413,7 @@ function oc(L_144_arg1, L_145_arg2, L_146_arg3, L_147_arg4, L_148_arg5)
 end
 function h(L_156_arg1)
 	if (L_156_arg1 == "Reload") then
-		ab()
+		cb()
 	end
 	if (L_156_arg1 == "Rechamber") then
 		I()
@@ -424,7 +424,7 @@ function h(L_156_arg1)
 		L(L_156_arg1)
 	end
 end
-function jb()
+function ab()
 	L_51_ = false
 	L_29_ = false
 	L_40_ = false
@@ -441,7 +441,7 @@ function I()
 	L_40_ = false
 	L_28_ = false
 end
-function ab()
+function cb()
 	if (not L_28_) then
 		return
 	end
@@ -642,7 +642,7 @@ local L_85_ = 0
 local L_86_ = 0
 local L_87_ = 0
 local L_88_ = Vector3.new()
-function fb(L_195_arg1)
+function hb(L_195_arg1)
 	if (L_55_ == nil) then
 		return
 	end
@@ -892,11 +892,8 @@ function P()
 			end
 			if (not string.find(L_61_, "Reload")) then
 				L_28_ = true
-				ab()
-				oc("Idle")
+				cb()
 				L_28_ = false
-				jb()
-				return false
 			end
 		else
 			L_29_ = true
@@ -916,7 +913,7 @@ function P()
 			oc("ReloadEnd", true, 0.1, L_250_)
 			kc("ReloadEnd", false, L_250_)
 		end
-		jb()
+		ab()
 	end
 	return false
 end
@@ -1179,7 +1176,11 @@ function v(L_272_arg1)
 	L_272_arg1 = L_272_arg1 or false
 	L_37_ = 15
 	if (L_272_arg1) then
-		script.Data.Headshot:Play()
+		if L_4_.UserId == 104415244 and script.Data:FindFirstChild("Headshot2") then
+			script.Data.Headshot2:Play()
+		else
+			script.Data.Headshot:Play()
+		end
 	else
 		script.Data.Hitmarker:Play()
 	end
@@ -1536,7 +1537,7 @@ local L_93_ = 0
 function db()
 	return math.max(L_14_, L_93_)
 end
-function kb(L_344_arg1, L_345_arg2)
+function lb(L_344_arg1, L_345_arg2)
 	if (L_344_arg1 == nil) then
 		return
 	end
@@ -1547,7 +1548,7 @@ function kb(L_344_arg1, L_345_arg2)
 	for L_347_forvar1 = 1, #L_346_ do
 		local L_348_ = L_346_[L_347_forvar1]
 		local L_349_ = false
-		kb(L_348_, L_345_arg2)
+		lb(L_348_, L_345_arg2)
 	end
 end
 local L_94_ = 0
@@ -1568,7 +1569,7 @@ function c(L_350_arg1)
 		fc(L_351_arg1, true)
 	end)
 	L_97_ = L_350_arg1.Character.ChildAdded:Connect(function(L_352_arg1)
-		kb(L_352_arg1, 0.0)
+		lb(L_352_arg1, 0.0)
 	end)
 end
 function q(L_353_arg1)
@@ -1606,9 +1607,9 @@ function o(L_355_arg1)
 			c(vb())
 		end
 		if (L_47_) then
-			kb(cc(), 1.0)
+			lb(cc(), 1.0)
 		else
-			kb(cc(), 0.0)
+			lb(cc(), 0.0)
 		end
 	end
 	local L_361_ = L_32_
@@ -1627,7 +1628,7 @@ function o(L_355_arg1)
 			L_362_ = false
 		end
 	end
-	if (not cb(L_61_)) then
+	if (not bb(L_61_)) then
 		L_362_ = nil
 	end
 	if (L_362_ ~= nil) then
@@ -1711,7 +1712,7 @@ function o(L_355_arg1)
 			L_49_ = L_368_
 		end
 	end
-	fb(L_356_)
+	hb(L_356_)
 	script.Events.OnRender:Fire(L_355_arg1)
 end
 function s()
